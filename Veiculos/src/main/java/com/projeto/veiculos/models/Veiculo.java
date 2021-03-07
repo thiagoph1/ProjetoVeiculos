@@ -14,6 +14,7 @@ public class Veiculo {
 	private String modelo;
 	private String marca;
 	private int ano;
+	private String registro;
 	
 	public Long getId() {
 		return id;
@@ -39,6 +40,13 @@ public class Veiculo {
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
+	public String getRegistro() {
+		return registro;
+	}
+	public void setRegistro(String registro) {
+		this.registro = registro;
+	}
+	
 	
 	
 	

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="UTF-8" />
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+<title>Veiculos</title>
+</head>
+<body>
+
+	<!-- Navbar -->
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" class="
+brand-logo center">Veículos</a>
+			<ul id="nav-mobile" class="left hide-on-med-and-down">
+				<li><a class='dropdown-trigger' data-target='dropdown1'
+					href="#"> Menu</a></li>
+			</ul>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a class="btn waves-effect waves-light"
+					href="/cadastroVeiculo">Cadastrar Veículo</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- Dropdown Structure -->
+	<ul id="dropdown1" class="dropdown-content">
+		<li><a href="#!">Usuários</a></li>
+		<li class="divider"></li>
+		<li><a href="#!">Veículos</a></li>
+		<li class="divider"></li>
+		<li><a href="#!">Condutores</a></li>
+	</ul>
+	<!-- Fim do Navbar -->
+
+	<main>
+		<div>
+			<table class="striped centered responsive-table container">
+				<thead>
+					<tr>
+						<th>Marca</th>
+						<th>Modelo</th>
+						<th>Ano</th>
+						<th>Registro</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="veiculo : ${veiculos}">
+						<td th:text=${veiculo.marca}></td>
+						<td th:text=${veiculo.modelo}></td>
+						<td th:text=${veiculo.ano}></td>
+						<td th:text=${veiculo.registro}></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</main>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript">
+		$('.dropdown-trigger').dropdown();
+	</script>
+</body>
+</html>
