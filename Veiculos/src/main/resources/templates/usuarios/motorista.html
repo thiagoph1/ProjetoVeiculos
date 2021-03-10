@@ -10,23 +10,18 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
-<title>Veiculos</title>
+<title>Motoristas</title>
 </head>
 <body>
 
 	<!-- Navbar -->
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="
-brand-logo center">Veículos</a>
+			<a href="#" class="brand-logo center">Motoristas</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="/dashboard"> Dashboard</a></li>
 				<li><a class='dropdown-trigger' data-target='dropdown1'
 					href="#"> Menu</a></li>
-			</ul>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a class="btn waves-effect waves-light"
-					href="/cadastroVeiculo">Cadastrar Veículo</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -37,7 +32,7 @@ brand-logo center">Veículos</a>
 		<li class="divider"></li>
 		<li><a href="/veiculo">Veículos</a></li>
 		<li class="divider"></li>
-		<li><a href="/condutores">Condutores</a></li>
+		<li><a href="/motorista">Motoristas</a></li>
 	</ul>
 	<!-- Fim do Navbar -->
 
@@ -46,18 +41,16 @@ brand-logo center">Veículos</a>
 			<table class="striped centered responsive-table container">
 				<thead>
 					<tr>
-						<th>Marca</th>
-						<th>Modelo</th>
-						<th>Ano</th>
-						<th>Registro</th>
+						<th>Login</th>
+						<th>Nome</th>
+						<th>Tipo Perfil</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="veiculo : ${veiculos}">
-						<td th:text=${veiculo.marca}></td>
-						<td th:text=${veiculo.modelo}></td>
-						<td th:text=${veiculo.ano}></td>
-						<td th:text=${veiculo.registro}></td>
+					<tr th:each="motorista : ${motoristas}">
+						<td th:text=${motorista.login}></td>
+						<td th:text=${motorista.nome}></td>
+						<td th:text=${motorista.roles}></td>
 					</tr>
 				</tbody>
 			</table>

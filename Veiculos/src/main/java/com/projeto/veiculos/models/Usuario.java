@@ -22,7 +22,7 @@ public class Usuario implements UserDetails, Serializable {
 	private String senha;
 	private String nome;
 	private String tipoCNH;
-	private String ValidadeCNH;
+	private String validadeCNH;
 
 	@ManyToMany
 	@JoinTable(name = "usuarios_roles",
@@ -74,11 +74,11 @@ public class Usuario implements UserDetails, Serializable {
 	}
 
 	public String getValidadeCNH() {
-		return ValidadeCNH;
+		return validadeCNH;
 	}
 
 	public void setValidadeCNH(String validadeCNH) {
-		ValidadeCNH = validadeCNH;
+		this.validadeCNH = validadeCNH;
 	}
 
 	@Override
@@ -115,5 +115,13 @@ public class Usuario implements UserDetails, Serializable {
 	public boolean isEnabled() {
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return "Usuario [login=" + login + ", senha=" + senha + ", nome=" + nome + ", tipoCNH=" + tipoCNH
+				+ ", validadeCNH=" + validadeCNH + ", roles=" + roles + "]";
+	}
+	
+	
 
 }
