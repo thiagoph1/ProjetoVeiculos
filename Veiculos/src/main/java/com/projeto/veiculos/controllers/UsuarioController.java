@@ -26,13 +26,8 @@ public class UsuarioController {
 	@GetMapping("/motorista")
 	public ModelAndView ListaMotorista() {
 		ModelAndView mav = new ModelAndView("usuarios/motorista");
-		Iterable<Usuario> motoristas = usuarioRp.findAllMotoristas();
-		
-		//	ArrayList<E> roles = usuarioRp.findAllMotoristas().pegar arraylist dos roles;
-		
-		// jogar arraylist ou transformar em iterable se der erro no navegador para mostrar
-		
-		mav.addObject("motoristas", motoristas);
+		Iterable<Usuario> usuarios = usuarioRp.findAll();
+		mav.addObject("usuarios", usuarios);
 		return mav;
 	}
 	

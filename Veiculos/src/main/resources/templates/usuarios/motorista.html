@@ -43,16 +43,22 @@
 					<tr>
 						<th>Login</th>
 						<th>Nome</th>
-						<th>Tipo Perfil</th>
+						<th>Tipo CNH</th>
+						<th>Validade CNH</th>
 					</tr>
-				</thead>
+				</thead  >
+				<th:block th:each="usuario : ${usuarios}">
+				<th:block th:each="role : ${usuario.roles}" th:if="${role.nomeRole} == 'ROLE_MOTORISTA'">
 				<tbody>
-					<tr th:each="motorista : ${motoristas}">
-						<td th:text=${motorista.login}></td>
-						<td th:text=${motorista.nome}></td>
-						<td th:text=${motorista.roles}></td>
+					<tr>
+						<td th:text=${usuario.login}></td>
+						<td th:text=${usuario.nome}></td>
+						<td th:text=${usuario.tipoCNH}></td>
+						<td th:text=${usuario.ValidadeCNH}></td>
 					</tr>
 				</tbody>
+				<th:block>
+				<th:block>
 			</table>
 		</div>
 
