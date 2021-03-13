@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -18,6 +20,9 @@ public class Usuario implements UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	private String login;
 	private String senha;
 	private String nome;
@@ -26,16 +31,26 @@ public class Usuario implements UserDetails, Serializable {
 
 	@ManyToMany
 	@JoinTable(name = "usuarios_roles",
-				joinColumns = @JoinColumn(name = "usuario_nome",
-				referencedColumnName = "login"),
-				inverseJoinColumns = @JoinColumn(name = "role_nome",
-				referencedColumnName = "nomeRole"))
+				joinColumns = @JoinColumn(name = "usuario_id",
+				referencedColumnName = "id"),
+				inverseJoinColumns = @JoinColumn(name = "role_id",
+				referencedColumnName = "id"))
 	private List<Role> roles;
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public List<Role> getRoles() {
 		return roles;
 	}
-
+	
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
