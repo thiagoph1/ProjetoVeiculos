@@ -73,8 +73,8 @@
 							<p> Perfil:<br/>
 					  			<label th:each="role : ${roles}">
 					  			<br/>
-           							<input type="checkbox" th:value="${role.id}"
-           								 id="${#lists.toList(roles)}" name="${#lists.toList(roles)}" />
+           							<input type="checkbox" th:value="${role.id}" 
+           									th:name="|roles[${role.id}]|"/>
           			 				<span th:switch="${role.nomeRole}">
           			 					<span th:case="'ROLE_ADMIN'">Administrador</span>
 										<span th:case="'ROLE_MOTORISTA'">Motorista</span>
