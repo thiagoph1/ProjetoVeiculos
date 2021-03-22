@@ -30,6 +30,8 @@ public class Role implements GrantedAuthority{
 		referencedColumnName = "id"))
 	private List<Usuario> usuarios;
 	
+	public Role() {
+	}
 	
 	
 	public Long getId() {

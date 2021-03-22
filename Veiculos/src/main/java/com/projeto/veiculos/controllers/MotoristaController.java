@@ -16,7 +16,7 @@ import com.projeto.veiculos.repositories.RoleRepository;
 import com.projeto.veiculos.repositories.UsuarioRepository;
 
 @Controller
-public class UsuarioController {
+public class MotoristaController {
 
 	@Autowired
 	UsuarioRepository usuarioRp;
@@ -25,62 +25,25 @@ public class UsuarioController {
 	RoleRepository roleRp;
 
 	// Mapeia a lista de todos os usuários
-	@GetMapping("/usuarios")
+	@GetMapping("/motoristas")
 	public ModelAndView ListaUsuarios() {
-		ModelAndView mav = new ModelAndView("usuarios/usuario");
+		ModelAndView mav = new ModelAndView("motoristas/motorista");
 		Iterable<Usuario> usuarios = usuarioRp.findAll();
 		mav.addObject("usuarios", usuarios);
 		return mav;
 	}
 
-	// Mapeia o formulário para cadastrar Administradores
-	@GetMapping("/cadastroAdmin")
-	public ModelAndView cadastrarAdmin() {
-		ModelAndView mav = new ModelAndView("usuarios/cadastroAdmin");
-		return mav;
-	}
-	
-	// Mapeia o formulário para cadastrar Gerentes
-	@GetMapping("/cadastroGerente")
-	public ModelAndView cadastrarGerente() {
-		ModelAndView mav = new ModelAndView("usuarios/cadastroGerente");
-		return mav;
-	}
 	
 	// Mapeia o formulário para cadastrar Motoristas
-	@GetMapping("/cadastroMotorista")
+	@GetMapping("/gerente/cadastroMotorista")
 	public ModelAndView cadastrarMotorista() {
-		ModelAndView mav = new ModelAndView("usuarios/cadastroMotorista");
+		ModelAndView mav = new ModelAndView("motorista/cadastroMotorista");
 		return mav;
 	}
 
-	@PostMapping("/salvarAdmin")
-	public ModelAndView salvarAdmin(Usuario usuario) {
-		ModelAndView mav = new ModelAndView("usuarios/usuario");
-		ArrayList<Role> roles = new ArrayList<>();
-		roles.add(roleRp.findByName("ROLE_ADMIN"));
-		usuario.setRoles(roles);
-		usuarioRp.save(usuario);
-		Iterable<Usuario> usuarios = usuarioRp.findAll();
-		mav.addObject("usuarios", usuarios);
-		return mav;
-	}
-	
-	@PostMapping("/salvarGerente")
-	public ModelAndView salvarGerente(Usuario usuario) {
-		ModelAndView mav = new ModelAndView("usuarios/usuario");
-		ArrayList<Role> roles = new ArrayList<>();
-		roles.add(roleRp.findByName("ROLE_GERENTE"));
-		usuario.setRoles(roles);
-		usuarioRp.save(usuario);
-		Iterable<Usuario> usuarios = usuarioRp.findAll();
-		mav.addObject("usuarios", usuarios);
-		return mav;
-	}
-	
-	@PostMapping("/salvarMotorista")
+	@PostMapping("/gerente/salvarMotorista")
 	public ModelAndView salvarMotorista(Usuario usuario) {
-		ModelAndView mav = new ModelAndView("usuarios/usuario");
+		ModelAndView mav = new ModelAndView("motorista/motorista");
 		ArrayList<Role> roles = new ArrayList<>();
 		roles.add(roleRp.findByName("ROLE_MOTORISTA"));
 		usuario.setRoles(roles);
@@ -90,7 +53,7 @@ public class UsuarioController {
 		return mav;
 	}
 
-	@GetMapping("/removerusuario/{idusuario}")
+	@GetMapping("/gerente/removerusuario/{idusuario}")
 	public ModelAndView excluir(@PathVariable("idusuario") Long idusuario) {
 
 		usuarioRp.deleteById(idusuario);

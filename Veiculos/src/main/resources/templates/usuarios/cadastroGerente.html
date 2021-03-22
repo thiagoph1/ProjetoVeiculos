@@ -10,13 +10,13 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
-<title>Cadastro de Motorista</title>
+<title>Cadastro de Gerente</title>
 </head>
 <body>
 	<!-- Navbar -->
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo center">Cadastro de Motorista</a>
+			<a href="#" class="brand-logo center">Cadastro de Gerente</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="/dashboard"> Dashboard</a></li>
 				<li><a class='dropdown-trigger' data-target='dropdown1'
@@ -33,14 +33,14 @@
 		<li class="divider"></li>
 		<li><a href="/veiculo">Veículos</a></li>
 		<li class="divider"></li>
-		<li><a href="/ADMIN">ADMIN</a></li>
+		<li><a href="/admin">ADMIN</a></li>
 	</ul>
 
 	<main>
 		<fieldset class="container">
 			<legend>Cadastro</legend>
 			<div class="row">
-				<form action="/salvarMotorista" name="formlulario"
+				<form th:action="@{/salvarGerente}" name="formlulario"
 					th:object="${usuario}" method="post" class="col s12"
 					onsubmit="return validar();">
 					<div class="row">
@@ -57,26 +57,14 @@
 								<label>Senha:</label><input id="senha" type="password" value=""
 									name="senha" />
 							</div>
-						</div>
-						<div class="row">
-							<div class="input-field col s3">
-								<label>Tipo CNH:</label><input id="tipoCNH" type="text" value=""
-									name="tipoCNH" />
-							</div>
-							<div class="input-field col s3">
-								<label>Validade CNH:</label><input id="validadeCNH" type="text"
-									value="" name="validadeCNH"  />
-							</div>
-						<div class="input-field col s1">
-							</div>
-						<div class="input-field col s3">
-								<label> Perfil: MOTORISTA
-									</label>
-						</div>
-						</div>
 							<div class="input-field col s12">
-								<button class="btn waves-effect waves-light" type="submit">Salvar</button>
+								<label> Perfil: GERENTE
+									</label>
 							</div>
+						</div>
+						<div class="input-field col s6">
+							<button class="btn waves-effect waves-light" type="submit">Salvar</button>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -93,12 +81,15 @@
 	<!-- validação do formulário -->
 	<script type="text/javascript">
 		function validar() {
-			var login       = document.getElementById("login");
-			var senha       = document.getElementById("senha");
-			var nome        = document.getElementById("nome");
-			var tipocnh     = document.getElementById("tipoCNH");
-			var validadecnh = document.getElementById("validadeCNH");
+			var login = document.getElementById("login");
+			var senha = document.getElementById("senha");
+			var nome = document.getElementById("nome");
 
+			if (nome.value == "") {
+				alert("Nome não informado")
+				nome.focus();
+				return false;
+			}
 			if (login.value == "") {
 				alert("Login não informado")
 				login.focus();
@@ -107,21 +98,6 @@
 			if (senha.value == "") {
 				alert("Senha não informada")
 				senha.focus();
-				return false;
-			}
-			if (nome.value == "") {
-				alert("Nome não informado")
-				nome.focus();
-				return false;
-			}
-			if (tipocnh.value == "") {
-				alert("Tipo CNH não informado")
-				tipocnh.focus();
-				return false;
-			}
-			if (validadecnh.value == "") {
-				alert("Validade da CNH não informado")
-				validadecnh.focus();
 				return false;
 			}
 			alert("Cadastro realizado")

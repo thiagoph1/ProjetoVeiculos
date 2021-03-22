@@ -23,8 +23,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http.csrf().disable() // para funcionar a autenticação na memoria
 		.authorizeRequests()
 		.antMatchers(HttpMethod.GET,"/").permitAll() // Qualquer usuário acessa a pagina inicial
-		.antMatchers(HttpMethod.GET, "/usuario").hasAnyRole("ADMIN") // só o usuário ROLE_ADMIN acessa
-		.antMatchers(HttpMethod.GET, "/veiculo", "/motorista").hasAnyRole("GERENTE", "ADMIN") // gerente e admin acessam
+		//.antMatchers(HttpMethod.GET, "/usuario").hasAnyRole("ADMIN") // só o usuário ROLE_ADMIN acessa
+		//.antMatchers(HttpMethod.GET, "/veiculo", "/motorista").hasAnyRole("GERENTE", "ADMIN") // gerente e admin acessam
 		.anyRequest().authenticated()
 		.and().formLogin().permitAll()
 		.defaultSuccessUrl("/dashboard")

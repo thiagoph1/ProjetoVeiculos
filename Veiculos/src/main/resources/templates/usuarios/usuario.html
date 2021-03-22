@@ -25,18 +25,22 @@
 			</ul>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a class="btn waves-effect waves-light"
-					href="/cadastroUsuario">Cadastrar Usuários</a></li>
+					href="/cadastroAdmin">Cadastrar Admin</a></li>
+				<li><a class="btn waves-effect waves-light"
+					href="/cadastroMotorista">Cadastrar Motorista</a></li>
+				<li><a class="btn waves-effect waves-light"
+					href="/cadastroGerente">Cadastrar Gerente</a></li>
 			</ul>
 		</div>
 	</nav>
 
 	<!-- Dropdown Structure -->
 	<ul id="dropdown1" class="dropdown-content">
-		<li><a href="/usuario">Usuários</a></li>
+		<li><a href="/usuarios">Usuários</a></li>
 		<li class="divider"></li>
-		<li><a href="/veiculo">Veículos</a></li>
+		<li><a href="/veiculos">Veículos</a></li>
 		<li class="divider"></li>
-		<li><a href="/motorista">Motoristas</a></li>
+		<li><a href="/motoristas">Motoristas</a></li>
 	</ul>
 	<!-- Fim do Navbar -->
 
@@ -50,10 +54,12 @@
 						<th>Tipo CNH</th>
 						<th>Validade CNH</th>
 						<th>Tipo perfil</th>
+						<th>Editar</th>
+						<th>Excluir</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr th:each="usuario : ${usuarios}">
+				<tbody >
+					<tr th:each="usuario: ${usuarios}">
 						<td th:text=${usuario.login}></td>
 						<td th:text=${usuario.nome}></td>
 						<td th:text=${usuario.tipoCNH}></td>
@@ -65,6 +71,23 @@
 								<span th:case="'ROLE_GERENTE'">Gerente</span>
 							<th:block>
 						</td>
+						<td th:each="role : ${usuario.roles}">
+						<th:block th:switch="${role.nomeRole}">
+							<th:block th:case="'ROLE_ADMIN'">
+								<a th:href="@{/editarAdmin/{idusuario}(idusuario=${usuario.id})}">
+									Editar</a>
+							</th:block>
+							<th:block th:case="'ROLE_MOTORISTA'">
+								<a th:href="@{/editarMotorista/{idusuario}(idusuario=${usuario.id})}">
+									Editar</a>
+							</th:block>
+							<th:block th:case="'ROLE_GERENTE'">
+								<a th:href="@{/editarGerente/{idusuario}(idusuario=${usuario.id})}">
+									Editar</a>
+							</th:block>
+						</td>
+						<td><a th:href="@{/removerusuario/{idusuario}(idusuario=${usuario.id})}">
+								Excluir</a></td>
 					</tr>
 				</tbody>
 			</table>

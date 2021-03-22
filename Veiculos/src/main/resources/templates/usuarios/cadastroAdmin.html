@@ -10,13 +10,13 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
-<title>Cadastro de Usuário</title>
+<title>Cadastro de Administrador</title>
 </head>
 <body>
 	<!-- Navbar -->
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo center">Cadastro de Usuário</a>
+			<a href="#" class="brand-logo center">Cadastro de Administrador</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="/dashboard"> Dashboard</a></li>
 				<li><a class='dropdown-trigger' data-target='dropdown1'
@@ -29,18 +29,18 @@
 
 	<!-- Dropdown Structure -->
 	<ul id="dropdown1" class="dropdown-content">
-		<li><a href="/usuario">Usuários</a></li>
+		<li><a href="/usuarios">Usuários</a></li>
 		<li class="divider"></li>
-		<li><a href="/veiculo">Veículos</a></li>
+		<li><a href="/veiculos">Veículos</a></li>
 		<li class="divider"></li>
-		<li><a href="/motorista">Motorista</a></li>
+		<li><a href="/motoristas">Motorista</a></li>
 	</ul>
 
 	<main>
 		<fieldset class="container">
 			<legend>Cadastro</legend>
 			<div class="row">
-				<form action="/salvarUsuario" name="formlulario"
+				<form action="/salvarAdmin" name="formlulario"
 					th:object="${usuario}" method="post" class="col s12"
 					onsubmit="return validar();">
 					<div class="row">
@@ -58,33 +58,11 @@
 									name="senha" />
 							</div>
 						</div>
-						<div class="row">
-							<div class="input-field col s3">
-								<label>Tipo CNH:</label><input id="tipoCNH" type="text" value=""
-									name="tipoCNH" />
-							</div>
-							<div class="input-field col s3">
-								<label>Validade CNH:</label><input id="validadeCNH" type="text"
-									value="" name="validadeCNH" />
-							</div>
-						<div class="input-field col s1">
-							</div>
-						<div class="input-field col s3">
-							<p> Perfil:<br/>
-					  			<label th:each="role : ${roles}">
-					  			<br/>
-           							<input type="checkbox" th:value="${role.id}" 
-           									th:name="|roles[${role.id}]|"/>
-          			 				<span th:switch="${role.nomeRole}">
-          			 					<span th:case="'ROLE_ADMIN'">Administrador</span>
-										<span th:case="'ROLE_MOTORISTA'">Motorista</span>
-										<span th:case="'ROLE_GERENTE'">Gerente</span>
-									</span>
-     							</label>
-     						</p>
+						<div class="input-field col s6">
+								<label> Perfil: ADMINISTRADOR
+									</label>
 						</div>
-						</div>
-							<div class="input-field col s12">
+							<div class="input-field col s6">
 								<button class="btn waves-effect waves-light" type="submit">Salvar</button>
 							</div>
 					</div>
