@@ -2,6 +2,7 @@ package com.projeto.veiculos.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,6 +91,33 @@ public class UsuarioController {
 		return mav;
 	}
 
+	@GetMapping("/editarAdmin/{idusuario}")
+	public ModelAndView editarAdmin(@PathVariable("idusuario") Long idusuario) {
+		ModelAndView mav = new ModelAndView("usuarios/cadastroAdmin");
+		Optional<Usuario> usuario = usuarioRp.findById(idusuario);
+		mav.addObject("usuario", usuario.get());
+		return mav;
+
+	}
+	
+	@GetMapping("/editarGerente/{idusuario}")
+	public ModelAndView editarGerente(@PathVariable("idusuario") Long idusuario) {
+		ModelAndView mav = new ModelAndView("usuarios/cadastroGerente");
+		Optional<Usuario> usuario = usuarioRp.findById(idusuario);
+		mav.addObject("usuario", usuario.get());
+		return mav;
+
+	}
+	
+	@GetMapping("/editarpessoa/{idusuario}")
+	public ModelAndView editarMotorista(@PathVariable("idusuario") Long idusuario) {
+		ModelAndView mav = new ModelAndView("usuarios/cadastroMotorista");
+		Optional<Usuario> usuario = usuarioRp.findById(idusuario);
+		mav.addObject("usuario", usuario.get());
+		return mav;
+
+	}
+	
 	@GetMapping("/removerusuario/{idusuario}")
 	public ModelAndView excluir(@PathVariable("idusuario") Long idusuario) {
 
