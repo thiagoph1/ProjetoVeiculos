@@ -15,5 +15,10 @@ public class IndexController {
 	public String dashboard() {
 		return "dashboard";
 	}
+	
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +39,7 @@ public class UsuarioController {
 	@GetMapping("/cadastroAdmin")
 	public ModelAndView cadastrarAdmin() {
 		ModelAndView mav = new ModelAndView("usuarios/cadastroAdmin");
+		mav.addObject("usuario", new Usuario());
 		return mav;
 	}
 	
@@ -45,6 +47,7 @@ public class UsuarioController {
 	@GetMapping("/cadastroGerente")
 	public ModelAndView cadastrarGerente() {
 		ModelAndView mav = new ModelAndView("usuarios/cadastroGerente");
+		mav.addObject("usuario", new Usuario());
 		return mav;
 	}
 	
@@ -52,6 +55,7 @@ public class UsuarioController {
 	@GetMapping("/cadastroMotorista")
 	public ModelAndView cadastrarMotorista() {
 		ModelAndView mav = new ModelAndView("usuarios/cadastroMotorista");
+		mav.addObject("usuario", new Usuario());
 		return mav;
 	}
 
@@ -60,6 +64,7 @@ public class UsuarioController {
 		ModelAndView mav = new ModelAndView("usuarios/usuario");
 		ArrayList<Role> roles = new ArrayList<>();
 		roles.add(roleRp.findByName("ROLE_ADMIN"));
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		usuario.setRoles(roles);
 		usuarioRp.save(usuario);
 		Iterable<Usuario> usuarios = usuarioRp.findAll();
@@ -72,6 +77,7 @@ public class UsuarioController {
 		ModelAndView mav = new ModelAndView("usuarios/usuario");
 		ArrayList<Role> roles = new ArrayList<>();
 		roles.add(roleRp.findByName("ROLE_GERENTE"));
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		usuario.setRoles(roles);
 		usuarioRp.save(usuario);
 		Iterable<Usuario> usuarios = usuarioRp.findAll();
@@ -84,6 +90,7 @@ public class UsuarioController {
 		ModelAndView mav = new ModelAndView("usuarios/usuario");
 		ArrayList<Role> roles = new ArrayList<>();
 		roles.add(roleRp.findByName("ROLE_MOTORISTA"));
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 		usuario.setRoles(roles);
 		usuarioRp.save(usuario);
 		Iterable<Usuario> usuarios = usuarioRp.findAll();
@@ -109,7 +116,7 @@ public class UsuarioController {
 
 	}
 	
-	@GetMapping("/editarpessoa/{idusuario}")
+	@GetMapping("/editarMotorista/{idusuario}")
 	public ModelAndView editarMotorista(@PathVariable("idusuario") Long idusuario) {
 		ModelAndView mav = new ModelAndView("usuarios/cadastroMotorista");
 		Optional<Usuario> usuario = usuarioRp.findById(idusuario);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"
 	charset="UTF-8" />
@@ -23,13 +24,20 @@
 			<a href="#" class="brand-logo center">DashBoard</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="/dashboard"> Dashboard</a></li>
-				<li><a class='dropdown-trigger' data-target='dropdown1' href="#"> Menu</a></li>
+				<li><a class='dropdown-trigger' data-target='dropdown1'
+					href="#"> Menu</a></li>
+				<li><a href="javascript: document.logoutForm.submit()"
+					role="menuitem"> Logout</a></li>
 			</ul>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a class="btn waves-effect waves-light" href="/serviço">Serviço</a></li>
 			</ul>
 		</div>
 	</nav>
+	<form name="logoutForm" th:action="@{/logout}" method="post"
+		th:hidden="true">
+		<input type="hidden" value="Sign Out" />
+	</form>
 	<!-- Fim do Navbar -->
 
 
@@ -41,6 +49,10 @@
 		<li class="divider"></li>
 		<li><a href="/motoristas">Motoristas</a></li>
 	</ul>
+	<main>
+		<div>
+		</div>
+	</main>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script

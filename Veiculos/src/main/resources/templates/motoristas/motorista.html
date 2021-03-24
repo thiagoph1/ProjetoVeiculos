@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"
 	charset="UTF-8" />
@@ -23,10 +25,12 @@
 				<li><a class='dropdown-trigger' data-target='dropdown1'
 					href="#"> Menu</a></li>
 			</ul>
+			<div sec:authorize="hasRole('ADMIN')">
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a class="btn waves-effect waves-light"
 					href="/gerente/cadastroMotorista">Cadastrar Motorista</a></li>
 			</ul>
+			</div>
 		</div>
 	</nav>
 

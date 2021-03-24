@@ -33,11 +33,11 @@
 
 	<!-- Dropdown Structure -->
 	<ul id="dropdown1" class="dropdown-content">
-		<li><a href="/usuario">Usuários</a></li>
+		<li><a href="/usuarios">Usuários</a></li>
 		<li class="divider"></li>
-		<li><a href="/veiculo">Veículos</a></li>
+		<li><a href="/veiculos">Veículos</a></li>
 		<li class="divider"></li>
-		<li><a href="/motorista">Motoristas</a></li>
+		<li><a href="/motoristas">Motoristas</a></li>
 	</ul>
 	<!-- Fim do Navbar -->
 
@@ -50,6 +50,8 @@
 						<th>Modelo</th>
 						<th>Ano</th>
 						<th>Registro</th>
+						<th>Editar</th>
+						<th>Excluir</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -58,6 +60,8 @@
 						<td th:text=${veiculo.modelo}></td>
 						<td th:text=${veiculo.ano}></td>
 						<td th:text=${veiculo.registro}></td>
+						<td><a th:href="@{/editarveiculo/{idveiculo}(idveiculo=${veiculo.id})}">Editar</a></td>
+						<td><a th:href="@{/removerveiculo/{idveiculo}(idveiculo=${veiculo.id})}">Excluir</a></td>
 					</tr>
 				</tbody>
 			</table>

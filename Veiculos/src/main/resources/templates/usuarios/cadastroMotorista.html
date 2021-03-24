@@ -59,19 +59,19 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="input-field col s3">
-								<label>Tipo CNH:</label><input id="tipoCNH" type="text" value=""
-									name="tipoCNH" />
-							</div>
-							<div class="input-field col s3">
-								<label>Validade CNH:</label><input id="validadeCNH" type="text"
-									value="" name="validadeCNH"  />
-							</div>
 						<div class="input-field col s1">
 							</div>
-						<div class="input-field col s3">
-								<label> Perfil: MOTORISTA
-									</label>
+							<div class="input-field col s1">
+								<label>Tipo CNH:</label><input id="tipoCNH" type="text" value=""
+									name="tipoCNH" th:field="*{tipoCNH}"/>
+							</div>
+							<div class="input-field col s2">
+								<label>Validade CNH:</label><input id="validadeCNH" type="text"
+									value="" name="validadeCNH" th:field="*{validadeCNH}"/>
+							</div>
+						<div class="input-field col s1">
+								<input id="id" type="hidden" readonly="readonly"
+									name="id" th:field="*{id}" />
 						</div>
 						</div>
 							<div class="input-field col s12">

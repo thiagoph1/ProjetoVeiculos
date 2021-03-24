@@ -26,11 +26,11 @@
 
 	<!-- Dropdown Structure -->
 	<ul id="dropdown1" class="dropdown-content">
-		<li><a href="/usuario">Usuários</a></li>
+		<li><a href="/usuarios">Usuários</a></li>
 		<li class="divider"></li>
-		<li><a href="/veiculo">Veículos</a></li>
+		<li><a href="/veiculos">Veículos</a></li>
 		<li class="divider"></li>
-		<li><a href="/motorista">Motorista</a></li>
+		<li><a href="/motoristas">Motorista</a></li>
 	</ul>
 
 	<main>
@@ -38,25 +38,27 @@
 		<legend>Cadastro</legend>
 			<div class="row">
 			<form action="/salvarveiculo" name="formlulario" method="post" class="col s12"
-				onsubmit="return validar();">
+				  th:object="${veiculo}" onsubmit="return validar();" >
 			<div class="row">
 				<div class="input-field col s3">
-				<input id="id" type="hidden" value="" name="id" />
-				</div>
-				<div class="input-field col s3">
-				<label>Marca:</label><input id="marca" type="text" value="" name="marca" /> 
+				<label>Marca:</label>
+				<input id="marca" type="text" value="" name="marca" th:field="*{marca}"/> 
 				</div>
 			<div class="row">
 				<div class="input-field col s3">   
-				<label>Modelo:</label><input id="modelo" type="text" value="" name="modelo" />   
+				<label>Modelo:</label>
+				<input id="modelo" type="text" value="" name="modelo" th:field="*{modelo}"/>   
 				</div>
 				<div class="input-field col s2">
-				<label>Ano:</label><input id="ano" type="text" value="" name="ano"/>    
+				<label>Ano:</label>
+				<input id="ano" type="text" value="" name="ano" th:field="*{ano}"/>    
 				</div>
 				<div class="input-field col s3"> 
-				<label>Registro:</label><input id="registro" type="text" value="" name="registro" 
-				placeholder="ano-Modelo-n°serie - Ex: 18-uno-01"/> 
+				<label>Registro:</label>
+				<input id="registro" type="text" value="" name="registro" 
+				placeholder="ano-Modelo-n°serie - Ex: 18-uno-01" th:field="*{registro}"/> 
 				</div>
+				<input id="id" type="hidden" readonly="readonly" name="id" th:field="*{id}" />
 			</div>
 				<div class="input-field col s12">				
 				<button class="btn waves-effect waves-light" type="submit" >Salvar</button>
