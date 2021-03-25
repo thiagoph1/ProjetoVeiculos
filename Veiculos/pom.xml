@@ -15,7 +15,7 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<modelVersion>4.0.0</modelVersion>
+	<modelVersion>3.0.0</modelVersion>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
