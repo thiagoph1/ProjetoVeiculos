@@ -14,6 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
+    private LoggingAccessDeniedHandler accessDeniedHandler;
+	
+	@Autowired
 	private ImplementacaoUserDetailsService implementacaoUserDetailsService;
 
 	@Override
@@ -21,16 +24,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http.csrf().disable()
 		.authorizeRequests()
 		.antMatchers("/", "/resources/**").permitAll()
-		/* */
+		/* somente o administrador pode acesso a tela de usuários */
 		.antMatchers("/usuarios", "/cadastroAdmin", "/cadastroGerente").hasRole("ADMIN")
-		/* */
-		.antMatchers("/motoristas", "/cadastroMotorista", "/cadastroVeiculo", "/editarveiculo/**",
+		/* o administrador e o gerente podem acessar as telas de veículos e motoristas */
+		.antMatchers("/motoristas", "/veiculos","/cadastroMotorista", "/cadastroVeiculo", "/editarveiculo/**",
 						"/removerveiculo/**").access
 						("hasRole('ADMIN') or hasRole('GERENTE')") 
 		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").permitAll()
 		.defaultSuccessUrl("/dashboard")
-		.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll();
+		.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll().and()
+        .exceptionHandling()
+        .accessDeniedHandler(accessDeniedHandler);;
 		
 	}
 	

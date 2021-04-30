@@ -27,7 +27,7 @@ public class MotoristaController {
 	// Mapeia a lista de todos os usuários
 	@GetMapping("/motoristas")
 	public ModelAndView ListaUsuarios() {
-		ModelAndView mav = new ModelAndView("motoristas/motorista");
+		ModelAndView mav = new ModelAndView("usuarios/motorista");
 		Iterable<Usuario> usuarios = usuarioRp.findAll();
 		mav.addObject("usuarios", usuarios);
 		return mav;
@@ -37,13 +37,13 @@ public class MotoristaController {
 	// Mapeia o formulário para cadastrar Motoristas
 	@GetMapping("/gerente/cadastroMotorista")
 	public ModelAndView cadastrarMotorista() {
-		ModelAndView mav = new ModelAndView("motorista/cadastroMotorista");
+		ModelAndView mav = new ModelAndView("usuarios/cadastroMotorista");
 		return mav;
 	}
 
 	@PostMapping("/gerente/salvarMotorista")
 	public ModelAndView salvarMotorista(Usuario usuario) {
-		ModelAndView mav = new ModelAndView("motorista/motorista");
+		ModelAndView mav = new ModelAndView("usuarios/motorista");
 		ArrayList<Role> roles = new ArrayList<>();
 		roles.add(roleRp.findByName("ROLE_MOTORISTA"));
 		usuario.setRoles(roles);

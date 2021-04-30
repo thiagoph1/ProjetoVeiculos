@@ -20,5 +20,10 @@ public class IndexController {
 	public String login() {
 		return "login";
 	}
+	
+    @RequestMapping("/acesso-negado")
+    public String accessDenied() {
+        return "/erros/acesso-negado";
+    }
 
 }

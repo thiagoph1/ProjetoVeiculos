@@ -6,42 +6,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"
 	charset="UTF-8" />
 
-<!--Import Google Icon Font-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!--Import materialize.css-->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-
-
-
-<title>Dashboard</title>
+<title>Acesso Negado</title>
 </head>
 <body>
+
 	<!-- Navbar -->
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="brand-logo center">DashBoard</a>
+			<a href="/dashboard" class="brand-logo center">DashBoard</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="/dashboard"> Dashboard</a></li>
 				<!-- Menu para os Administradores e Gerentes -->
-				<li sec:authorize="hasRole('ADMIN') or hasRole('GERENTE')">
-				<a class='dropdown-trigger' data-target='dropdown1'
-					href="#"> Menu</a></li>
+				<li sec:authorize="hasRole('ADMIN') or hasRole('GERENTE')"><a
+					class='dropdown-trigger' data-target='dropdown1' href="#"> Menu</a></li>
 				<li><a href="javascript: document.logoutForm.submit()"
 					role="menuitem"> Logout</a></li>
 			</ul>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a class="btn waves-effect waves-light" href="/serviço">Serviço</a></li>
-			</ul>
 		</div>
 	</nav>
+
 	<form name="logoutForm" th:action="@{/logout}" method="post"
 		th:hidden="true">
 		<input type="hidden" value="Sign Out" />
 	</form>
-	<!-- Fim do Navbar -->
-
 
 	<!-- Dropdown Structure -->
 	<ul id="dropdown1" class="dropdown-content">
@@ -51,16 +42,13 @@
 		<li class="divider"></li>
 		<li><a href="/motoristas">Motoristas</a></li>
 	</ul>
+	<!-- Fim do Navbar -->
+
 	<main>
-		<div>
+		<div class="container" style="text-align: center; margin-top: 250px;">
+			<h1>Acesso Negado</h1>
 		</div>
 	</main>
 
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script type="text/javascript">
-		$('.dropdown-trigger').dropdown();
-	</script>
 </body>
 </html>
