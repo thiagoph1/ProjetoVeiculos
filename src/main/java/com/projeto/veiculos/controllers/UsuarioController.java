@@ -34,6 +34,16 @@ public class UsuarioController {
 		mav.addObject("usuarios", usuarios);
 		return mav;
 	}
+	
+	// Mapeia a lista de todos os motoristas
+	@GetMapping("/motoristas")
+	public ModelAndView ListaMotoristas() {
+		ModelAndView mav = new ModelAndView("usuarios/motorista");
+		Iterable<Usuario> usuarios = usuarioRp.findAll();
+		mav.addObject("usuarios", usuarios);
+		return mav;
+	}
+
 
 	// Mapeia o formulário para cadastrar Administradores
 	@GetMapping("/cadastroAdmin")
