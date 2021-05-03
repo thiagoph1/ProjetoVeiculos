@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="UTF-8" />
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+<title>Cadastro de Serviço</title>
+</head>
+<body>
+	<!-- Navbar -->
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo center">Cadastro de Serviço</a>
+			<ul id="nav-mobile" class="left hide-on-med-and-down">
+				<li><a href="/dashboard"> Dashboard</a></li>
+				<!-- Menu para os Administradores e Gerentes -->
+				<li sec:authorize="hasRole('ADMIN') or hasRole('GERENTE')">
+				<a class='dropdown-trigger' data-target='dropdown1'
+					href="#"> Menu</a></li>
+			</ul>
+		</div>
+	</nav>
+	<!-- Fim do Navbar -->
+
+
+	<!-- Dropdown Structure -->
+	<ul id="dropdown1" class="dropdown-content">
+		<li><a href="/usuarios">Usuários</a></li>
+		<li class="divider"></li>
+		<li><a href="/veiculos">Veículos</a></li>
+		<li class="divider"></li>
+		<li><a href="/motoristas">Motoristas</a></li>
+	</ul>
+
+	<main>
+		<fieldset class="container">
+			<legend>Cadastro</legend>
+			<div class="row">
+			<form action="/salvarServico" name="formlulario" method="post"
+					  th:object="${servico}" class="col s12" onsubmit="return validar();">
+					<div class="row">
+						<div class="input-field col s4">
+							<label>Registro de Veículo:</label>
+							<select id="registro" >
+								<option th:each = "v : ${veiculos} " th:value="${v.id}" th:text="${v.registro}" >
+							</select>
+						</div>
+						<div class="input-field col s3">
+							<label>Motorista:</label>
+							<select id="registro" >
+								<option th:each = "u : ${usuarios} " th:value="${u.id}" th:text="${u.login}" >
+							</select>
+						</div>
+						<div class="input-field col s3">
+							<label>Distancia:</label>
+							<input id="distancia" type="text" name="distancia" th:field="*{distancia}"/>
+						</div>
+						<div class="input-field col s3">
+							<label>Abastecimento:</label>
+							<input id="abastecimento" type="text" name="abastecimento" th:field="*{abastecimento}"/>
+						</div>
+						<div class="input-field col s3">
+							<label>Data Inicial</label>
+							<input id="dataInicial" type="date" name="dataInicial" th:field="*{dataInicial}"/>
+						</div>
+						<div class="input-field col s3">
+							<label>Data Final</label>
+							<input id="dataFinal" type="date" name="dataFinal" th:field="*{dataFinal}"/>
+						</div>
+
+
+						<div class="input-field col s1">
+								<input id="id" type="hidden" readonly="readonly"
+									name="id" th:field="*{id}" />
+						</div>
+							<div class="input-field col s12">
+								<button class="btn waves-effect waves-light" type="submit">Salvar</button>
+							</div>
+					</div>
+			</form>
+			</div>
+		</fieldset>
+	</main>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript">
+		$('.dropdown-trigger').dropdown();
+	</script>
+
+	<!-- validação do formulário -->
+	<script type="text/javascript">
+		function validar() {
+			var registro        = document.getElementById("login");
+			var motorista       = document.getElementById("senha");
+			var distancia       = document.getElementById("nome");
+			var abastecimento   = document.getElementById("tipoCNH");
+			var dataInicial     = document.getElementById("validadeCNH");
+			var dataFinal       = document.getElementById("validadeCNH");
+
+			if (login.value == "") {
+				alert("Login não informado")
+				login.focus();
+				return false;
+			}
+			if (senha.value == "") {
+				alert("Senha não informada")
+				senha.focus();
+				return false;
+			}
+			if (nome.value == "") {
+				alert("Nome não informado")
+				nome.focus();
+				return false;
+			}
+			if (tipocnh.value == "") {
+				alert("Tipo CNH não informado")
+				tipocnh.focus();
+				return false;
+			}
+			if (validadecnh.value == "") {
+				alert("Validade da CNH não informado")
+				validadecnh.focus();
+				return false;
+			}
+			alert("Cadastro realizado")
+		}
+	</script>
+</body>
+</html>

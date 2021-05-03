@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 	
-<title>Cadastro de Veículo</title>
+<title>Cadastro de Serviço</title>
 </head>
 <body>
 	<!-- Navbar -->
@@ -42,20 +42,20 @@
 			<div class="row">
 				<div class="input-field col s3">
 				<label>Marca:</label>
-				<input id="marca" type="text" value="" name="marca" th:field="*{marca}"/> 
+				<input id="marca" type="text" name="marca" th:field="*{marca}"/> 
 				</div>
 			<div class="row">
 				<div class="input-field col s3">   
 				<label>Modelo:</label>
-				<input id="modelo" type="text" value="" name="modelo" th:field="*{modelo}"/>   
+				<input id="modelo" type="text" name="modelo" th:field="*{modelo}"/>   
 				</div>
 				<div class="input-field col s2">
 				<label>Ano:</label>
-				<input id="ano" type="text" value="" name="ano" th:field="*{ano}"/>    
+				<input id="ano" type="text" name="ano" th:field="*{ano}"/>    
 				</div>
 				<div class="input-field col s3"> 
 				<label>Registro:</label>
-				<input id="registro" type="text" value="" name="registro" 
+				<input id="registro" type="text" name="registro" 
 				placeholder="ano-Modelo-n°serie - Ex: 18-uno-01" th:field="*{registro}"/> 
 				</div>
 				<input id="id" type="hidden" readonly="readonly" name="id" th:field="*{id}" />
