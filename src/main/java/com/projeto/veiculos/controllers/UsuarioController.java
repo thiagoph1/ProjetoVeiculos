@@ -97,7 +97,7 @@ public class UsuarioController {
 	
 	@PostMapping("/salvarMotorista")
 	public ModelAndView salvarMotorista(Usuario usuario) {
-		ModelAndView mav = new ModelAndView("usuarios/usuario");
+		ModelAndView mav = new ModelAndView("usuarios/motorista");
 		ArrayList<Role> roles = new ArrayList<>();
 		roles.add(roleRp.findByName("ROLE_MOTORISTA"));
 		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));

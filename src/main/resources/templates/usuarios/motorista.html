@@ -61,6 +61,10 @@
 						<td th:text=${usuario.nome}></td>
 						<td th:text=${usuario.tipoCNH}></td>
 						<td th:text=${usuario.ValidadeCNH}></td>
+						<td> <a th:href="@{/editarMotorista/{idusuario}(idusuario=${usuario.id})}">
+									Editar</a></td>
+						<td><a th:href="@{/removerusuario/{idusuario}(idusuario=${usuario.id})}">
+								Excluir</a></td>
 					</tr>
 				</tbody>
 				<th:block>
