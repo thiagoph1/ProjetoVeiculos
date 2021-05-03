@@ -13,7 +13,7 @@ public class Servico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private int distacia;
+	private int distancia;
 	private int abastecimento;
 	private String dataInicial;
 	private String dataFinal;
@@ -25,6 +25,8 @@ public class Servico {
 	@ManyToOne
 	@JoinColumn(name ="usuario_id")
 	private Usuario usuario;
+	
+	
 
 	public long getId() {
 		return id;
@@ -34,12 +36,12 @@ public class Servico {
 		this.id = id;
 	}
 
-	public int getDistacia() {
-		return distacia;
+	public int getDistancia() {
+		return distancia;
 	}
 
-	public void setDistacia(int distacia) {
-		this.distacia = distacia;
+	public void setDistancia(int distancia) {
+		this.distancia = distancia;
 	}
 
 	public int getAbastecimento() {
