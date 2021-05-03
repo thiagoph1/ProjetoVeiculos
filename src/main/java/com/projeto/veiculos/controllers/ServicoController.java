@@ -43,7 +43,7 @@ public class ServicoController {
 	@PostMapping("/salvarServico")
 	public ModelAndView salvarServico(Servico servico) {
 		servicoRp.save(servico);
-		ModelAndView mav = new ModelAndView("veiculo/veiculo");
+		ModelAndView mav = new ModelAndView("servicos/servico");
 		Iterable<Servico> servicos = servicoRp.findAll();
 		mav.addObject("servicos", servicos);
 		return mav;

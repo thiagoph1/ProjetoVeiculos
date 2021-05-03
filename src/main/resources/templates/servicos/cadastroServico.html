@@ -46,33 +46,42 @@
 			<form action="/salvarServico" name="formlulario" method="post"
 					  th:object="${servico}" class="col s12" onsubmit="return validar();">
 					<div class="row">
-						<div class="input-field col s4">
-							<label>Registro de Veículo:</label>
+						<div class="input-field col s1">
+							</div>
+						<div class="input-field col s3">
 							<select id="registro" >
+								<option value="" disabled selected>Escolha</option>
 								<option th:each = "v : ${veiculos} " th:value="${v.id}" th:text="${v.registro}" >
 							</select>
+							<label>Registro de Veículos:</label>
 						</div>
 						<div class="input-field col s3">
-							<label>Motorista:</label>
-							<select id="registro" >
+							<select id="motorista" >
+								<option value="" disabled selected>Escolha</option>
 								<option th:each = "u : ${usuarios} " th:value="${u.id}" th:text="${u.login}" >
 							</select>
+							<label>Motoristas:</label>
 						</div>
 						<div class="input-field col s3">
-							<label>Distancia:</label>
+							<label>Distancia a percorrida (em KM):</label>
 							<input id="distancia" type="text" name="distancia" th:field="*{distancia}"/>
 						</div>
+					</div>
+						<div class="row">
+							<div class="input-field col s1">
+							</div>
+							<div class="input-field col s3">
+								<label>Data Inicial</label>
+								<input id="dataInicial" type="date" placeholder="Data" name="dataInicial" th:field="*{dataInicial}"/>
+							</div>
+							<div class="input-field col s3">
+								<label>Data Final</label>
+								<input id="dataFinal" type="date" placeholder="Data" name="dataFinal" th:field="*{dataFinal}"/>
+							</div>
 						<div class="input-field col s3">
-							<label>Abastecimento:</label>
+							<label>Abastecimento feito (em Litros):</label>
 							<input id="abastecimento" type="text" name="abastecimento" th:field="*{abastecimento}"/>
 						</div>
-						<div class="input-field col s3">
-							<label>Data Inicial</label>
-							<input id="dataInicial" type="date" name="dataInicial" th:field="*{dataInicial}"/>
-						</div>
-						<div class="input-field col s3">
-							<label>Data Final</label>
-							<input id="dataFinal" type="date" name="dataFinal" th:field="*{dataFinal}"/>
 						</div>
 
 
@@ -83,7 +92,6 @@
 							<div class="input-field col s12">
 								<button class="btn waves-effect waves-light" type="submit">Salvar</button>
 							</div>
-					</div>
 			</form>
 			</div>
 		</fieldset>
@@ -94,6 +102,11 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script type="text/javascript">
 		$('.dropdown-trigger').dropdown();
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+	    	$('select').formSelect();
+	 	 });
 	</script>
 
 	<!-- validação do formulário -->
