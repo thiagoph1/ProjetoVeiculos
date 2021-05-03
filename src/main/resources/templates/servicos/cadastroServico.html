@@ -49,14 +49,14 @@
 						<div class="input-field col s1">
 							</div>
 						<div class="input-field col s3">
-							<select id="registro" >
+							<select id="registro" th:field="*{veiculo}">
 								<option value="" disabled selected>Escolha</option>
 								<option th:each = "v : ${veiculos} " th:value="${v.id}" th:text="${v.registro}" >
 							</select>
 							<label>Registro de Veículos:</label>
 						</div>
 						<div class="input-field col s3">
-							<select id="motorista" >
+							<select id="motorista" th:field="*{usuario}">
 								<option value="" disabled selected>Escolha</option>
 								<option th:each = "u : ${usuarios} " th:value="${u.id}" th:text="${u.login}" >
 							</select>

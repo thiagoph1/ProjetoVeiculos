@@ -27,6 +27,8 @@ public class ServicoController {
 	public ModelAndView ListaServicos() {
 		ModelAndView mav = new ModelAndView("servicos/servico");
 		Iterable<Servico> servicos = servicoRp.findAll();
+		mav.addObject("veiculos", veiculoRp.findAll());
+		mav.addObject("usuarios", usuarioRp.findAll());
 		mav.addObject("servicos", servicos);
 		return mav;
 	}
@@ -45,6 +47,8 @@ public class ServicoController {
 		servicoRp.save(servico);
 		ModelAndView mav = new ModelAndView("servicos/servico");
 		Iterable<Servico> servicos = servicoRp.findAll();
+		mav.addObject("veiculos", veiculoRp.findAll());
+		mav.addObject("usuarios", usuarioRp.findAll());
 		mav.addObject("servicos", servicos);
 		return mav;
 	}

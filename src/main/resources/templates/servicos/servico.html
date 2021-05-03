@@ -63,41 +63,25 @@
 						<th>Abastecimento</th>
 						<th>Data Inicial</th>
 						<th>Data Final</th>
-						<th>Consumo</th>
+						<th>Consumo (KM/L)</th>
 						<th>Editar</th>
 						<th>Excluir</th>
 					</tr>
-				</thead  >
+				</thead>
 				<tbody>
-				<tr th:each="usuario: ${usuarios}">
-						<td th:text=${usuario.login}></td>
-						<td th:text=${usuario.nome}></td>
-						<td th:text=${usuario.tipoCNH}></td>
-						<td th:text=${usuario.ValidadeCNH}></td>
-						<td th:each="role : ${usuario.roles}">
-							<th:block th:switch="${role.nomeRole}">
-								<span th:case="'ROLE_ADMIN'">Administrador</span>
-								<span th:case="'ROLE_MOTORISTA'">Motorista</span>
-								<span th:case="'ROLE_GERENTE'">Gerente</span>
-							<th:block>
-						</td>
-						<td th:each="role : ${usuario.roles}">
-						<th:block th:switch="${role.nomeRole}">
-							<th:block th:case="'ROLE_ADMIN'">
-								<a th:href="@{/editarAdmin/{idusuario}(idusuario=${usuario.id})}">
-									Editar</a>
-							</th:block>
-							<th:block th:case="'ROLE_MOTORISTA'">
-								<a th:href="@{/editarMotorista/{idusuario}(idusuario=${usuario.id})}">
-									Editar</a>
-							</th:block>
-							<th:block th:case="'ROLE_GERENTE'">
-								<a th:href="@{/editarGerente/{idusuario}(idusuario=${usuario.id})}">
-									Editar</a>
-							</th:block>
-						</td>
-						<td><a th:href="@{/removerusuario/{idusuario}(idusuario=${usuario.id})}">
-								Excluir</a></td>
+				<tr th:each="servico: ${servicos}">
+						<td th:text=${servico.veiculo}></td>
+						<td th:text=${servico.usuario}></td>
+						<td th:text=${servico.distancia}></td>
+						<td th:text=${servico.abastecimento}></td>
+						<td th:text=${servico.dataInicial}></td>
+						<td th:text=${servico.dataFinal}></td>
+						<td th:with="consumo=${servico.distancia / servico.abastecimento}">
+  							<span th:text="${consumo}"></span></td>
+						<td><a th:href="@{/editar/{idservico}(idservico=${servico.id})}">
+							Editar</a></td>
+						<td><a th:href="@{/remover/{idservico}(idservico=${servico.id})}">
+							Excluir</a></td>
 					</tr>
 				</tbody>
 			</table>
