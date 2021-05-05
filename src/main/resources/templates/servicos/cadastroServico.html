@@ -72,7 +72,8 @@
 							</div>
 							<div class="input-field col s3">
 								<label>Data Inicial</label>
-								<input id="dataInicial" type="date" placeholder="Data" name="dataInicial" th:field="*{dataInicial}"/>
+								<input id="dataInicial" type="date" 
+									placeholder="Data" name="dataInicial" th:field="*{dataInicial}"/>
 							</div>
 							<div class="input-field col s3">
 								<label>Data Final</label>
@@ -112,36 +113,41 @@
 	<!-- validação do formulário -->
 	<script type="text/javascript">
 		function validar() {
-			var registro        = document.getElementById("login");
-			var motorista       = document.getElementById("senha");
-			var distancia       = document.getElementById("nome");
-			var abastecimento   = document.getElementById("tipoCNH");
-			var dataInicial     = document.getElementById("validadeCNH");
-			var dataFinal       = document.getElementById("validadeCNH");
+			var registro        = document.getElementById("registro");
+			var motorista       = document.getElementById("motorista");
+			var distancia       = document.getElementById("distancia");
+			var abastecimento   = document.getElementById("abastecimento");
+			var dataInicial     = document.getElementById("dataInicial");
+			var dataFinal       = document.getElementById("dataFinal");
 
-			if (login.value == "") {
-				alert("Login não informado")
-				login.focus();
+			if (registro.value == "") {
+				alert("registro não informado")
+				registro.focus();
 				return false;
 			}
-			if (senha.value == "") {
-				alert("Senha não informada")
-				senha.focus();
+			if (motorista.value == "") {
+				alert("motorista não informada")
+				motorista.focus();
 				return false;
 			}
-			if (nome.value == "") {
-				alert("Nome não informado")
-				nome.focus();
+			if (distancia.value == "") {
+				alert("distancia não informado")
+				distancia.focus();
 				return false;
 			}
-			if (tipocnh.value == "") {
-				alert("Tipo CNH não informado")
-				tipocnh.focus();
+			if (abastecimento.value == "") {
+				alert("abastecimento não informado")
+				abastecimento.focus();
 				return false;
 			}
-			if (validadecnh.value == "") {
-				alert("Validade da CNH não informado")
-				validadecnh.focus();
+			if (dataInicial.value == "") {
+				alert("dataInicial não informado")
+				dataInicial.focus();
+				return false;
+			}
+			if (dataFinal.value == "") {
+				alert("dataFinal não informado")
+				dataFinal.focus();
 				return false;
 			}
 			alert("Cadastro realizado")
