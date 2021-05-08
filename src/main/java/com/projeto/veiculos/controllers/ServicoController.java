@@ -70,10 +70,9 @@ public class ServicoController {
 	public ModelAndView excluirServico(@PathVariable("idservico") Long idservico) {
 		servicoRp.deleteById(idservico);
 		ModelAndView mav = new ModelAndView("servicos/servico");
-		Iterable<Servico> servicos = servicoRp.findAll();
 		mav.addObject("veiculos", veiculoRp.findAll());
 		mav.addObject("usuarios", usuarioRp.findAll());
-		mav.addObject("servicos", servicos);
+		mav.addObject("servicos", servicoRp.findAll());
 		return mav;
 	}
 
