@@ -13,9 +13,9 @@ public class Servico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private int distancia;
-	private int abastecimento;
-	private int consumo;
+	private float distancia;
+	private float abastecimento;
+	private float consumo;
 	private String dataInicial;
 	private String dataFinal;
 	
@@ -37,19 +37,19 @@ public class Servico {
 		this.id = id;
 	}
 
-	public int getDistancia() {
+	public float getDistancia() {
 		return distancia;
 	}
 
-	public void setDistancia(int distancia) {
+	public void setDistancia(float distancia) {
 		this.distancia = distancia;
 	}
 
-	public int getAbastecimento() {
+	public float getAbastecimento() {
 		return abastecimento;
 	}
 
-	public void setAbastecimento(int abastecimento) {
+	public void setAbastecimento(float abastecimento) {
 		this.abastecimento = abastecimento;
 	}
 
@@ -85,11 +85,11 @@ public class Servico {
 		this.usuario = usuario;
 	}
 
-	public int getConsumo() {
+	public float getConsumo() {
 		return consumo;
 	}
 
-	public void setConsumo(int consumo) {
+	public void setConsumo(float consumo) {
 		this.consumo = consumo;
 	}
 	
