@@ -12,6 +12,59 @@
 <!--Import materialize.css-->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+	
+	
+<style type="text/css">
+	body {
+  background-color: #f6f6f6;
+  font-size: 13px;
+  letter-spacing: 0.02rem;
+}
+
+h6 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.card,
+.card-panel {
+  box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08),
+    0 1px 3px 1px rgba(60, 64, 67, 0.16);
+}
+
+.container-fluid {
+  padding: 1rem 1.5rem;
+  max-width: 1000px;
+}
+
+.row {
+  margin: 0 -0.75rem;
+}
+
+@media only screen and (min-width: 993px) {
+  main {
+    padding-left: 480px;
+  }
+}
+
+  .card-action {
+    border-top: none;
+  }
+
+  .card-text {
+    width: calc(100% - 60px);
+  }
+  .card-icon i {
+    width: 100%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.25);
+  }
+  
+  .card a{
+  	font-size: 1.2rem
+  }
+
+</style>
 
 
 
@@ -25,9 +78,8 @@
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 				<li><a href="/dashboard"> Dashboard</a></li>
 				<!-- Menu para os Administradores e Gerentes -->
-				<li sec:authorize="hasRole('ADMIN') or hasRole('GERENTE')">
-				<a class='dropdown-trigger' data-target='dropdown1'
-					href="#"> Menu</a></li>
+				<li sec:authorize="hasRole('ADMIN') or hasRole('GERENTE')"><a
+					class='dropdown-trigger' data-target='dropdown1' href="#"> Menu</a></li>
 				<li><a href="javascript: document.logoutForm.submit()"
 					role="menuitem"> Logout</a></li>
 			</ul>
@@ -52,7 +104,54 @@
 		<li><a href="/motoristas">Motoristas</a></li>
 	</ul>
 	<main>
-		<div>
+		<div class="container-fluid">
+			<div class="row center">
+				<div class="col s12 m4">
+					<div class="card blue darken-1 white-text">
+						<div class="card-content valign-wrapper" >
+							<div class="card-text">
+								<h4>10</h4>
+							</div>
+							<div class="card-action">
+								<a class="white-text" href="/veiculos">Veiculos</a>
+							</div>
+							<div class="card-icon">
+								<i class="material-icons medium valign">directions_car</i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card blue darken-1 white-text">
+						<div class="card-content valign-wrapper" >
+							<div class="card-text">
+								<h4>10</h4>
+							</div>
+							<div class="card-action">
+								<a class="white-text" href="/motoristas">motoristas</a>
+							</div>
+							<div class="card-icon">
+								<i class="material-icons medium valign">people</i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card blue darken-1 white-text">
+						<div class="card-content valign-wrapper" >
+							<div class="card-text">
+								<h4>10</h4>
+							</div>
+							<div class="card-action">
+								<a class="white-text" href="/servico">Serviços</a>
+							</div>
+							<div class="card-icon">
+								<i class="material-icons medium valign">compare_arrows</i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</main>
 
