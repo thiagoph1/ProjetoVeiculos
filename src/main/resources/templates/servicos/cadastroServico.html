@@ -81,21 +81,21 @@
 							</div>
 						<div class="input-field col s3">
 							<label>Abastecimento feito (em Litros):</label>
-							<input id="abastecimento" type="text" name="abastecimento" th:field="*{abastecimento}"/>
+							<input id="abastecimento" type="text" name="abastecimento" 
+								   th:field="*{abastecimento}" value="0"/>
 						</div>
 						</div>
 
-
+						<div class="input-field col s2">
+							<label class="active">Consumo (Km/l):</label>
+							<input id="consumo" readonly="readonly"	name="consumo" th:field="*{consumo}" />
+						</div>
+						
 						<div class="input-field col s1">
 								<input id="id" type="hidden" readonly="readonly"
 									name="id" th:field="*{id}" />
 						</div>
-						<div class="input-field col s2">
-						<label class="active">Consumo (Km/l):</label>
-							<th:block th:with="consumo=${servico.distancia / servico.abastecimento}"></th:block>
-								<input id="consumo" readonly="readonly"
-									name="${consumo}" th:field="*{consumo}" />
-						</div>
+						
 							<div class="input-field col s12">
 								<button class="btn waves-effect waves-light" type="submit">Salvar</button>
 							</div>
@@ -158,6 +158,29 @@
 			}
 			alert("Cadastro realizado")
 		}
+	</script>
+	
+	<!-- Script para calculo do consumo -->
+	<script type="text/javascript">
+	
+	function id(el) {
+		  return document.getElementById( el );
+		}
+		function total(km,l) {
+		  return parseFloat(l.replace(',', '.'), 10) / parseFloat(km.replace(',', '.'), 10);
+		}
+		window.onload = function() {
+		  id('abastecimento').addEventListener('keyup', function() {
+		    var result = total( this.value , id('distancia').value );
+		    id('consumo').value = String(result.toFixed(2));
+		  });
+
+		  id('distancia').addEventListener('keyup', function(){
+		    var result = total( id('abastecimento').value , this.value );
+		    id('consumo').value = String(result.toFixed(2));
+		  });
+		}
+	
 	</script>
 </body>
 </html>
