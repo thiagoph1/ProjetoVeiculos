@@ -28,18 +28,12 @@
 				<li sec:authorize="hasRole('ADMIN') or hasRole('GERENTE')">
 				<a class='dropdown-trigger' data-target='dropdown1'
 					href="#"> Menu</a></li>
-				<li><a href="javascript: document.logoutForm.submit()"
-					role="menuitem"> Logout</a></li>
 			</ul>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a class="btn waves-effect waves-light" href="/cadastroServico">Cadastro de Serviço</a></li>
 			</ul>
 		</div>
 	</nav>
-	<form name="logoutForm" th:action="@{/logout}" method="post"
-		th:hidden="true">
-		<input type="hidden" value="Sign Out" />
-	</form>
 	<!-- Fim do Navbar -->
 
 
@@ -57,6 +51,7 @@
 			<table class="striped centered responsive-table container">
 				<thead>
 					<tr>
+						<th>Id</th>
 						<th>Motorista</th>
 						<th>Registro Veículo</th>
 						<th>Distancia (KM)</th>
@@ -70,14 +65,14 @@
 				</thead>
 				<tbody>
 				<tr th:each="servico: ${servicos}">
+						<td th:text=${servico.id}></td>
 						<td th:text=${servico.usuario}></td>
 						<td th:text=${servico.veiculo}></td>
 						<td th:text=${servico.distancia}></td>
 						<td th:text=${servico.abastecimento}></td>
 						<td th:text=${servico.dataInicial}></td>
 						<td th:text=${servico.dataFinal}></td>
-						<td th:with="consumo=${servico.distancia / servico.abastecimento}">
-  							<span th:text="${consumo}"></span></td>
+						<td th:text=${servico.consumo}>
 						<td><a th:href="@{/editarServico/{idservico}(idservico=${servico.id})}">
 							Editar</a></td>
 						<td><a th:href="@{/removerServico/{idservico}(idservico=${servico.id})}">

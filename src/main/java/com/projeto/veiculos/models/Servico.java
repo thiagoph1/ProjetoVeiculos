@@ -15,6 +15,7 @@ public class Servico {
 	private long id;
 	private int distancia;
 	private int abastecimento;
+	private int consumo;
 	private String dataInicial;
 	private String dataFinal;
 	
@@ -82,6 +83,14 @@ public class Servico {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public int getConsumo() {
+		return consumo;
+	}
+
+	public void setConsumo(int consumo) {
+		this.consumo = consumo;
 	}
 	
 	

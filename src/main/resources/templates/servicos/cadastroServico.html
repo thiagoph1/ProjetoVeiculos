@@ -90,6 +90,12 @@
 								<input id="id" type="hidden" readonly="readonly"
 									name="id" th:field="*{id}" />
 						</div>
+						<div class="input-field col s2">
+						<label class="active">Consumo (Km/l):</label>
+							<th:block th:with="consumo=${servico.distancia / servico.abastecimento}"></th:block>
+								<input id="consumo" readonly="readonly"
+									name="${consumo}" th:field="*{consumo}" />
+						</div>
 							<div class="input-field col s12">
 								<button class="btn waves-effect waves-light" type="submit">Salvar</button>
 							</div>
