@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.projeto.veiculos.models.Role;
+import com.projeto.veiculos.models.Servico;
 import com.projeto.veiculos.models.Usuario;
 import com.projeto.veiculos.repositories.RoleRepository;
 import com.projeto.veiculos.repositories.ServicoRepository;
@@ -38,19 +39,26 @@ public class IndexController {
 	@RequestMapping("/dashboard")
 	public ModelAndView dashboard() {
 		ModelAndView mav = new ModelAndView("dashboard");
-		List<Role> roles = new ArrayList<>();
-		roles.add(roleRp.findByName("ROLE_MOTORISTA"));
+		
+		List<Role> roles = new ArrayList<>(); // lista de regras (vazia)
+		roles.add(roleRp.findByName("ROLE_MOTORISTA")); // adicionando regra de motorista na lista
+		
 		List<Usuario> usuarios = usuarioRp.findAll();
-		List<Usuario> motoristas = new ArrayList<>();
+		List<Usuario> motoristas = new ArrayList<>(); // lista de motoristas (vazia)
+		
 		for (Usuario usuario : usuarios) {
 				if (usuario.getRoles().get(0) == roles.get(0)) {
-					motoristas.add(usuario);
+					motoristas.add(usuario); // adicionando usuarios do tipo motoristas na lista de motoristas
 				}
-				
 		}
+		
+		
 		mav.addObject("motoristas" ,motoristas);
 		mav.addObject("veiculos", veiculoRp.findAll());
-		mav.addObject("servicos", servicoRp.findAll());
+		List<Servico> servicos = servicoRp.findAll();
+		mav.addObject("servicos", servicos);
+		
+		
 		return mav;
 	}
 	
